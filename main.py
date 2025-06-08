@@ -17,8 +17,12 @@ app = FastAPI()
 
 @app.post("/query")
 async def query_endpoint(request: Request):
-    body = await request.json()
-    query = body.GET("query")
+    try:
+        body = await request.json()
+        question = body.get("question")
+        return {"response": f"Received: {question}"}
+    except Exception as e:
+        return {"error": "Invalid JSON", "details": str(e)}
 
     # 1. Get embedding for query
     embed_response = openai.Embedding.create(
