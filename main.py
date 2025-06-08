@@ -4,9 +4,8 @@ import pinecone
 import os
 from dotenv import load_dotenv
 
-# Init OpenAI & Pinecone
-openai.api_key = os.getenv['OPENAI_API_KEY']
-pc = pinecone.Pinecone(api_key=os.getenv['PINECONE_API_KEY'])
+openai.api_key = os.getenv('OPENAI_API_KEY')
+pc = pinecone.Pinecone(api_key=os.getenv('PINECONE_API_KEY'))
 
 # Connect to index
 index = pc.Index("tradetron-vector-search")
