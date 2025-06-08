@@ -23,7 +23,7 @@ async def query_endpoint(request: Request):
     except Exception as e:
         return {"error": "Invalid JSON", "details": str(e)}
     # 1. Get embedding for query
-    embed_response = openai.Embedding.create(
+    embed_response = openai.embeddings.create(
         input=query,
         model="text-embedding-3-small",
         dimensions=1024
