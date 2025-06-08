@@ -19,8 +19,8 @@ app = FastAPI()
 async def query_endpoint(request: Request):
     try:
         body = await request.json()
-        question = body.get("question")
-        return {"response": f"Received: {question}"}
+        query = body.get("query")
+        return {"response": f"Received: {query}"}
     except Exception as e:
         return {"error": "Invalid JSON", "details": str(e)}
 
